@@ -1130,12 +1130,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1227560181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4fd143be96809a4e98da9b56dcf3b45, type: 3}
+  m_Script: {fileID: 11500000, guid: 88b24122d9e08b442b707319edcc8eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 360818088}
   mouseSensitivity: 3.5
   walkSpeed: 6
+  gravity: -13
+  moveSmoothTime: 0.3
+  mouseSmoothTime: 0.03
   lockCursor: 1
 --- !u!143 &1227560183
 CharacterController:
