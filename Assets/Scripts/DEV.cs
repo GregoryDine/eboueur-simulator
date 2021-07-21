@@ -7,6 +7,7 @@ public class DEV : MonoBehaviour
 
     private void Awake()
     {
+        //diplay ver
         text.text = Application.version;
     }
 }
