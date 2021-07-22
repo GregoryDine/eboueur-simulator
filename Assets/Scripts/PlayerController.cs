@@ -10,10 +10,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float sprintSpeed = 10.0f;
     [SerializeField] float jumpForce = 6.0f;
     [SerializeField] float gravity = -13.0f;
+    [SerializeField] float pushPower = 2.0f;
     [SerializeField] [Range(0.0f, 0.5f)] float moveSmoothTime = 0.3f;
     [SerializeField] [Range(0.0f, 0.05f)] float mouseSmoothTime = 0.03f;
 
     [SerializeField] bool lockCursor = true;
+
+    float currentHorizontalSpeed;
 
     float cameraPitch = 0.0f;
     float velocityY = 0.0f;
@@ -41,6 +44,11 @@ public class PlayerController : MonoBehaviour
     {
         UpdateMouseLook();
         UpdateMovement();
+
+        //get current horizontal speed
+        Vector3 horizontalVelocity = controller.velocity;
+        horizontalVelocity = new Vector3(controller.velocity.x, 0, controller.velocity.z);
+        currentHorizontalSpeed = horizontalVelocity.magnitude;
     }
 
     void UpdateMouseLook()
@@ -103,5 +111,29 @@ public class PlayerController : MonoBehaviour
 
         //apply mov
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    //push rigidbodies with player's body
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody body = hit.collider.attachedRigidbody;
+
+        //no rigidbody
+        if (body == null || body.isKinematic)
+        {
+            return;
+        }
+
+        //don't push object bellow the player
+        if (hit.moveDirection.y < -0.3f)
+        {
+            return;
+        }
+
+        //calculate push direction (only push objects to the sides, never up and down)
+        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+
+        //apply push
+        body.velocity = pushDir * pushPower * currentHorizontalSpeed;
     }
 }

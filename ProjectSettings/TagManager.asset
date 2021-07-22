@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - 10pts
-  - 20pts
-  - 50pts
+  - Bin
+  - CanPickup
   layers:
   - Default
   - TransparentFX
