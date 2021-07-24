@@ -43,8 +43,20 @@ public class Interact : MonoBehaviour
                 {
                     //get object's points value
                     PointsValue pickedUpObject = hit.transform.GetComponent<PointsValue>();
-                    //pickup object
-                    Debug.Log(pickedUpObject.pointsValue + " Points !");
+                    
+
+                    if (pickedUpObject.pointsValue + ScoreCounter.instance.currentScore <= 100)
+                    {
+                        //add points to the Score Counter
+                        ScoreCounter.instance.CollectPoints(pickedUpObject.pointsValue);
+                        //destroy object
+                        Destroy(hit.transform.gameObject);
+                    }
+                    else
+                    {
+                        //send warning
+                        Debug.Log("Not enough space");
+                    }
                 }
             }
             pickup = false;
@@ -63,7 +75,7 @@ public class Interact : MonoBehaviour
                 if (hit.transform.gameObject.tag == "Bin")
                 {
                     //use the bin
-                    Debug.Log("Bin !");
+                    ScoreCounter.instance.IncreaseTotalScore();
                 }
             }
             throwInBin = false;
