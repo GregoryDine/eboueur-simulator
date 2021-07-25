@@ -6,8 +6,11 @@ public class Interact : MonoBehaviour
 
     [SerializeField] float reach = 3.5f;
 
-    bool pickup = false;
+    bool pickUp = false;
     bool throwInBin = false;
+
+    [SerializeField] GameObject leftClickUI;
+    [SerializeField] GameObject EKeyUI;
 
     void Update()
     {
@@ -15,7 +18,7 @@ public class Interact : MonoBehaviour
         //pickup
         if (Input.GetButtonDown("Fire1"))
         {
-            pickup = true;
+            pickUp = true;
         }
         //throw in bin
         if (Input.GetKeyDown(KeyCode.E))
@@ -26,24 +29,25 @@ public class Interact : MonoBehaviour
 
     void FixedUpdate()
     {
-        Pickup();
+        PickUp();
         ThrowInBin();
     }
 
-    void Pickup()
+    void PickUp()
     {
-        if (pickup)
+        //shoot raycast
+        RaycastHit hit;
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, reach))
         {
-            //shoot raycast
-            RaycastHit hit;
-            if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, reach))
+            //check if the object can be picked up
+            if (hit.transform.gameObject.tag == "CanPickUp")
             {
-                //check if the object can be picked up
-                if (hit.transform.gameObject.tag == "CanPickup")
+                //check if input is used
+                if (pickUp)
                 {
                     //get object's points value
                     PointsValue pickedUpObject = hit.transform.GetComponent<PointsValue>();
-                    
+
 
                     if (pickedUpObject.pointsValue + ScoreCounter.instance.currentScore <= 100)
                     {
@@ -58,27 +62,56 @@ public class Interact : MonoBehaviour
                         Debug.Log("Not enough space");
                     }
                 }
+
+                //display input on UI
+                leftClickUI.SetActive(true);
             }
-            pickup = false;
+            else
+            {
+                //disable input display on UI
+                leftClickUI.SetActive(false);
+            }
         }
+        else
+        {
+            //disable input display on UI
+            leftClickUI.SetActive(false);
+        }
+
+        pickUp = false;
     }
 
     void ThrowInBin()
     {
-        if (throwInBin)
+        //shoot raycast
+        RaycastHit hit;
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, reach))
         {
-            //shoot raycast
-            RaycastHit hit;
-            if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, reach))
+            //check if the object is the bin
+            if (hit.transform.gameObject.tag == "Bin")
             {
-                //check if the object is the bin
-                if (hit.transform.gameObject.tag == "Bin")
+                //check if input is used
+                if (throwInBin)
                 {
                     //use the bin
-                    ScoreCounter.instance.IncreaseTotalScore();
+                    ScoreCounter.instance.IncreaseTotalScore();                 
                 }
+
+                //display input on UI
+                EKeyUI.SetActive(true);
             }
-            throwInBin = false;
+            else
+            {
+                //disable input display on UI
+                EKeyUI.SetActive(false);
+            }
         }
+        else
+        {
+            //disable input display on UI
+            EKeyUI.SetActive(false);
+        }
+
+        throwInBin = false;
     }
 }
