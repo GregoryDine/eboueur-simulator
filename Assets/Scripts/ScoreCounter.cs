@@ -26,14 +26,14 @@ public class ScoreCounter : MonoBehaviour
     public void CollectPoints(float collectedPoints)
     {
         currentScore += collectedPoints;
-        collectedPointsUI.text = "Collected Points : " + currentScore;
+        collectedPointsUI.text = currentScore + " %";
     }
 
     public void IncreaseTotalScore()
     {
         totalScore += currentScore;
         currentScore = 0f;
-        totalScoreUI.text = "Total Score : " + totalScore;
-        collectedPointsUI.text = "Collected Points : " + currentScore;
+        totalScoreUI.text = totalScore.ToString();
+        collectedPointsUI.text = currentScore + " %";
     }
 }
