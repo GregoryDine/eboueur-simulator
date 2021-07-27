@@ -19,5 +19,11 @@ public class DEV : MonoBehaviour
         {
             player.position = new Vector3(0, 0, 0);
         }
+
+        //quit game
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
