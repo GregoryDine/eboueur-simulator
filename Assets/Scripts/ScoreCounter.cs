@@ -8,7 +8,7 @@ public class ScoreCounter : MonoBehaviour
     public float currentScore;
     public float totalScore;
 
-    [SerializeField] Text collectedPointsUI;
+    [SerializeField] Image collectedPointsUI;
     [SerializeField] Text totalScoreUI;
 
     void Awake()
@@ -26,7 +26,7 @@ public class ScoreCounter : MonoBehaviour
     public void CollectPoints(float collectedPoints)
     {
         currentScore += collectedPoints;
-        collectedPointsUI.text = currentScore + " %";
+        collectedPointsUI.fillAmount = currentScore / 100;
     }
 
     public void IncreaseTotalScore()
@@ -34,6 +34,6 @@ public class ScoreCounter : MonoBehaviour
         totalScore += currentScore;
         currentScore = 0f;
         totalScoreUI.text = totalScore.ToString();
-        collectedPointsUI.text = currentScore + " %";
+        collectedPointsUI.fillAmount = currentScore / 100;
     }
 }

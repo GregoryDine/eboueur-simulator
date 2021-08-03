@@ -12,6 +12,8 @@ public class Interact : MonoBehaviour
     [SerializeField] GameObject leftClickUI;
     [SerializeField] GameObject EKeyUI;
 
+    [SerializeField] Animator FullBagWarning;
+
     void Update()
     {
         //detect inputs
@@ -59,7 +61,7 @@ public class Interact : MonoBehaviour
                     else
                     {
                         //send warning
-                        Debug.Log("Not enough space");
+                        FullBagWarning.SetTrigger("FullBagWarning");
                     }
                 }
 
