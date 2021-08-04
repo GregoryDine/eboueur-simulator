@@ -5,6 +5,7 @@ public class DEV : MonoBehaviour
 {
     [SerializeField] Text text;
     [SerializeField] Transform player;
+    
 
     void Awake()
     {
@@ -18,6 +19,12 @@ public class DEV : MonoBehaviour
         if (player.position.y < -10)
         {
             player.position = new Vector3(0, 0, 0);
+        }
+
+        //trigger GameOver
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            GameOverManager.instance.GameOver();
         }
 
         //quit game

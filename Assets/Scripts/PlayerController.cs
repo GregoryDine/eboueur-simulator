@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [HideInInspector] public bool canMove;
+
     [SerializeField] Transform playerCamera;
     CharacterController controller;
 
@@ -27,8 +29,24 @@ public class PlayerController : MonoBehaviour
     Vector2 currentDir = Vector2.zero;
     Vector2 currentDirVelocity = Vector2.zero;
 
+    public static PlayerController instance;
+
+    void Awake()
+    {
+        //create instance for the script
+        if (instance != null)
+        {
+            Debug.LogWarning("There is multiple PlayerController instances!");
+            return;
+        }
+
+        instance = this;
+    }
+
     void Start()
     {
+        canMove = true;
+
         //get character controller
         controller = GetComponent<CharacterController>();
 
@@ -42,7 +60,11 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        UpdateMouseLook();
+        if (canMove)
+        {
+            UpdateMouseLook();
+        }
+
         UpdateMovement();
 
         //get current horizontal speed
@@ -96,7 +118,7 @@ public class PlayerController : MonoBehaviour
             velocityY = 0.0f;
         }
         //apply jump velocity
-        if (Input.GetButtonDown("Jump") && controller.isGrounded)
+        if (Input.GetButtonDown("Jump") && controller.isGrounded && canMove)
         {
             velocityY = jumpForce;
         }
@@ -107,7 +129,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //calculate velocity
-        Vector3 velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * (isRunning ? sprintSpeed : walkSpeed) + Vector3.up * velocityY;
+        Vector3 velocity = (canMove ? (transform.forward * currentDir.y + transform.right * currentDir.x) : Vector3.zero) * (isRunning ? sprintSpeed : walkSpeed) + Vector3.up * velocityY;
 
         //apply mov
         controller.Move(velocity * Time.deltaTime);

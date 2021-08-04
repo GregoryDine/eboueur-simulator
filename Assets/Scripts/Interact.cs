@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Interact : MonoBehaviour
 {
+    [HideInInspector] public bool canInteract;
+
     [SerializeField] Transform playerCamera;
 
     [SerializeField] float reach = 3.5f;
@@ -14,18 +16,40 @@ public class Interact : MonoBehaviour
 
     [SerializeField] Animator FullBagWarning;
 
+    public static Interact instance;
+
+    void Awake()
+    {
+        //create instance for the script
+        if (instance != null)
+        {
+            Debug.LogWarning("There is multiple Interact instances!");
+            return;
+        }
+
+        instance = this;
+    }
+
+    void Start()
+    {
+        canInteract = true;
+    }
+
     void Update()
     {
-        //detect inputs
-        //pickup
-        if (Input.GetButtonDown("Fire1"))
+        if (canInteract)
         {
-            pickUp = true;
-        }
-        //throw in bin
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            throwInBin = true;
+            //detect inputs
+            //pickup
+            if (Input.GetButtonDown("Fire1"))
+            {
+                pickUp = true;
+            }
+            //throw in bin
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                throwInBin = true;
+            }
         }
     }
 

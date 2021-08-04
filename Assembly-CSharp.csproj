@@ -59,9 +59,10 @@
     <Compile Include="Assets\Scripts\ScoreCounter.cs" />
     <Compile Include="Assets\Scripts\Interact.cs" />
     <Compile Include="Assets\Scripts\DEV.cs" />
+    <Compile Include="Assets\Scripts\GarbageTruck.cs" />
     <Compile Include="Assets\Scripts\PointsValue.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\GarbageTruck.cs" />
+    <Compile Include="Assets\Scripts\GameOverManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -33,7 +33,7 @@ public class ScoreCounter : MonoBehaviour
     {
         totalScore += currentScore;
         currentScore = 0f;
-        totalScoreUI.text = totalScore.ToString();
+        totalScoreUI.text = totalScore + " Points!";
         collectedPointsUI.fillAmount = currentScore / 100;
     }
 }
