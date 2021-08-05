@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 2584390746772078710}
   - component: {fileID: 2584390746772078708}
   - component: {fileID: 2584390746772078711}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2584390746772078713}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 1.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2584390748187308326}
@@ -94,7 +94,8 @@ GameObject:
   - component: {fileID: 2584390748187308326}
   - component: {fileID: 2584390748187308329}
   - component: {fileID: 2584390748187308328}
-  m_Layer: 0
+  - component: {fileID: 1711433507}
+  m_Layer: 2
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,12 +147,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b24122d9e08b442b707319edcc8eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
   playerCamera: {fileID: 2584390746772078710}
   mouseSensitivity: 3.5
   walkSpeed: 6
   sprintSpeed: 10
   jumpForce: 6
   gravity: -13
+  pushPower: 1.5
   moveSmoothTime: 0.3
   mouseSmoothTime: 0.03
   lockCursor: 1
+--- !u!114 &1711433507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2584390748187308331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ca13c19f90c2c43a4bc626b090b72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canInteract: 0
+  playerCamera: {fileID: 2584390746772078710}
+  reach: 3.5
+  leftClickUI: {fileID: 0}
+  EKeyUI: {fileID: 0}
+  FullBagWarning: {fileID: 0}

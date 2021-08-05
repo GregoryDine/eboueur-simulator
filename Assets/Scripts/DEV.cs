@@ -26,11 +26,5 @@ public class DEV : MonoBehaviour
         {
             GameOverManager.instance.GameOver();
         }
-
-        //quit game
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
     }
 }
