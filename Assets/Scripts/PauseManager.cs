@@ -6,6 +6,7 @@ public class PauseManager : MonoBehaviour
     [HideInInspector] public bool gameIsPaused = false;
 
     [SerializeField] GameObject pauseUI;
+    [SerializeField] GameObject settingsUI;
     [SerializeField] Transform content;
 
     public static PauseManager instance;
@@ -25,12 +26,11 @@ public class PauseManager : MonoBehaviour
     void Update()
     {
         //detect pause input
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) &! GameOverManager.instance.gameIsOver)
         {
             if (!gameIsPaused)
             {
                 //stop time and display pause menu
-                content.localScale = new Vector3(1, 1, 1);
                 PlayerController.instance.canMove = false;
                 Time.timeScale = 0f;
                 pauseUI.SetActive(true);
@@ -50,6 +50,7 @@ public class PauseManager : MonoBehaviour
         //unpause game
         Time.timeScale = 1f;
         PlayerController.instance.canMove = true;
+        settingsUI.SetActive(false);
         pauseUI.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -65,11 +66,12 @@ public class PauseManager : MonoBehaviour
 
     public void SettingsButton()
     {
-
+        settingsUI.SetActive(true);
     }
 
     public void MainMenuButton()
     {
-
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 }

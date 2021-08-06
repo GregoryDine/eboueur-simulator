@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameOverManager : MonoBehaviour
 {
+    [HideInInspector] public bool gameIsOver;
+
     [SerializeField] GameObject gameOverUI;
     [SerializeField] GameObject inGameUI;
 
@@ -20,9 +22,15 @@ public class GameOverManager : MonoBehaviour
         instance = this;
     }
 
+    void Start()
+    {
+        gameIsOver = false;
+    }
+
     public void GameOver()
     {
         //disable player and ingame ui, enable gameover menu
+        gameIsOver = true;
         PlayerController.instance.canMove = false;
         Interact.instance.canInteract = false;
         inGameUI.SetActive(false);
@@ -39,6 +47,6 @@ public class GameOverManager : MonoBehaviour
 
     public void MainMenuButton()
     {
-
+        SceneManager.LoadScene(0);
     }
 }
