@@ -11,11 +11,5 @@ public class DEV : MonoBehaviour
         {
             player.position = new Vector3(0, 0, 0);
         }
-
-        //trigger GameOver
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            GameOverManager.instance.GameOver();
-        }
     }
 }

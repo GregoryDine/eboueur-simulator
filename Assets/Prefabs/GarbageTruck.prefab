@@ -44,8 +44,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.4933104, b: 0, a: 1}
-  m_Intensity: 2
-  m_Range: 40
+  m_Intensity: 1
+  m_Range: 25
   m_SpotAngle: 30
   m_InnerSpotAngle: 1
   m_CookieSize: 10
@@ -197,7 +197,7 @@ AudioSource:
   m_GameObject: {fileID: 849117447}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 00a8a7223774ee14580972cb08e7d35e, type: 2}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: f4873d061590b4847b94a7015591a86e, type: 2}
   m_audioClip: {fileID: 8300000, guid: 2c1124a8f4622f644a669179c87a0b58, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -208,7 +208,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 10.165828
+  MinDistance: 1.5
   MaxDistance: 100
   Pan2D: 0
   rolloffMode: 2
@@ -219,64 +219,64 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.01
+      time: 0.015
       value: 1
-      inSlope: -100.03984
-      outSlope: -100.03984
+      inSlope: -66.69333
+      outSlope: -66.69333
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.02
+      time: 0.03
       value: 0.5
-      inSlope: -25.00996
-      outSlope: -25.00996
+      inSlope: -16.673332
+      outSlope: -16.673332
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.04
+      time: 0.06
       value: 0.25
-      inSlope: -6.25249
-      outSlope: -6.25249
+      inSlope: -4.168333
+      outSlope: -4.168333
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.08
+      time: 0.12
       value: 0.125
-      inSlope: -1.5631225
-      outSlope: -1.5631225
+      inSlope: -1.0420833
+      outSlope: -1.0420833
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.16
+      time: 0.24
       value: 0.0625
-      inSlope: -0.39078063
-      outSlope: -0.39078063
+      inSlope: -0.26052082
+      outSlope: -0.26052082
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.32
+      time: 0.48
       value: 0.03125
-      inSlope: -0.09769516
-      outSlope: -0.09769516
+      inSlope: -0.065130204
+      outSlope: -0.065130204
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.64
+      time: 0.7966699
       value: 0.011413574
-      inSlope: -0.02442379
-      outSlope: -0.02442379
+      inSlope: -0.016282551
+      outSlope: -0.016282551
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -284,8 +284,8 @@ AudioSource:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -0.010003988
-      outSlope: -0.010003988
+      inSlope: -0.015005982
+      outSlope: -0.015005982
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -382,8 +382,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.4933104, b: 0, a: 1}
-  m_Intensity: 2
-  m_Range: 40
+  m_Intensity: 1
+  m_Range: 25
   m_SpotAngle: 30
   m_InnerSpotAngle: 1
   m_CookieSize: 10
@@ -502,6 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06e155d41a0ec774b96b6a646868acc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  engine: {fileID: 849117449}
 --- !u!1 &2290723302505574597
 GameObject:
   m_ObjectHideFlags: 0

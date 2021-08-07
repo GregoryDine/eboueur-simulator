@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     Vector2 currentDir = Vector2.zero;
     Vector2 currentDirVelocity = Vector2.zero;
 
+    int horizontalAxis;
+    int verticalAxis;
+
     public static PlayerController instance;
 
     void Awake()
@@ -71,6 +74,20 @@ public class PlayerController : MonoBehaviour
         Vector3 horizontalVelocity = controller.velocity;
         horizontalVelocity = new Vector3(controller.velocity.x, 0, controller.velocity.z);
         currentHorizontalSpeed = horizontalVelocity.magnitude;
+
+        //apply keybinds on axis
+        //WASD
+        if (SettingsMenuManager.instance.keybindsProfile == 0)
+        {
+            verticalAxis = (Input.GetKey(KeyCode.W) ? 1 : 0) + (Input.GetKey(KeyCode.S) ? -1 : 0);
+            horizontalAxis = (Input.GetKey(KeyCode.D) ? 1 : 0) + (Input.GetKey(KeyCode.A) ? -1 : 0);
+        }
+        //ZQSD
+        else if (SettingsMenuManager.instance.keybindsProfile == 1)
+        {
+            verticalAxis = (Input.GetKey(KeyCode.Z) ? 1 : 0) + (Input.GetKey(KeyCode.S) ? -1 : 0);
+            horizontalAxis = (Input.GetKey(KeyCode.D) ? 1 : 0) + (Input.GetKey(KeyCode.Q) ? -1 : 0);
+        }
     }
 
     void UpdateMouseLook()
@@ -93,7 +110,7 @@ public class PlayerController : MonoBehaviour
     void UpdateMovement()
     {
         //detect inputs
-        Vector2 targetDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector2 targetDir = new Vector2(horizontalAxis, verticalAxis);
         targetDir.Normalize();
         bool isRunning = Input.GetKey(KeyCode.LeftShift) && controller.isGrounded;
 

@@ -13,11 +13,40 @@ public class SettingsMenuManager : MonoBehaviour
     [SerializeField] Dropdown resolutionDropdown;
     [SerializeField] Dropdown qualityDropdown;
     [SerializeField] Toggle fullscreenToggle;
+    [SerializeField] Slider volumeSlider;
+    [SerializeField] Dropdown keybindsDropdown;
 
     Resolution[] resolutions;
 
+    public int keybindsProfile;
+
+    public static SettingsMenuManager instance;
+
+    void Awake()
+    {
+        //create instance for the script
+        if (instance != null)
+        {
+            Debug.LogWarning("There is multiple SettingsMenuManager instances!");
+            return;
+        }
+
+        instance = this;
+    }
+
     public void Start()
     {
+        float savedVolume = PlayerPrefs.GetFloat("volume");
+        if (savedVolume == 0)
+        {
+            savedVolume = 1f;
+        }
+        volumeSlider.value = savedVolume;
+        audioMixer.SetFloat("masterVolume", Mathf.Log10(savedVolume) * 20);
+
+        keybindsProfile = PlayerPrefs.GetInt("keybindsProfile");
+        keybindsDropdown.value = keybindsProfile;
+
         fullscreenToggle.isOn = Screen.fullScreen;
 
         qualityDropdown.value = QualitySettings.GetQualityLevel();
@@ -46,7 +75,8 @@ public class SettingsMenuManager : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        audioMixer.SetFloat("masterVolume", volume);
+        audioMixer.SetFloat("masterVolume", Mathf.Log10(volume) * 20);
+        PlayerPrefs.SetFloat("volume", volume);
     }
 
     public void SetFullScreen(bool isFullScreen)
@@ -63,6 +93,12 @@ public class SettingsMenuManager : MonoBehaviour
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
+    }
+
+    public void SetKeybindsProfile(int keybindsIndex)
+    {
+        keybindsProfile = keybindsIndex;
+        PlayerPrefs.SetInt("keybindsProfile", keybindsProfile);
     }
 
     public void BackButton()
