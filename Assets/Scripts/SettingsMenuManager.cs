@@ -15,10 +15,12 @@ public class SettingsMenuManager : MonoBehaviour
     [SerializeField] Toggle fullscreenToggle;
     [SerializeField] Slider volumeSlider;
     [SerializeField] Dropdown keybindsDropdown;
+    [SerializeField] Slider mouseSSlider;
 
     Resolution[] resolutions;
 
     public int keybindsProfile;
+    public float mouseSensitivity;
 
     public static SettingsMenuManager instance;
 
@@ -43,6 +45,13 @@ public class SettingsMenuManager : MonoBehaviour
         }
         volumeSlider.value = savedVolume;
         audioMixer.SetFloat("masterVolume", Mathf.Log10(savedVolume) * 20);
+
+        if (PlayerPrefs.GetFloat("mouseSensitivity") == 0)
+        {
+            PlayerPrefs.SetFloat("mouseSensitivity", 3.5f);
+        }
+        mouseSensitivity = PlayerPrefs.GetFloat("mouseSensitivity");
+        mouseSSlider.value = mouseSensitivity;
 
         keybindsProfile = PlayerPrefs.GetInt("keybindsProfile");
         keybindsDropdown.value = keybindsProfile;
@@ -99,6 +108,12 @@ public class SettingsMenuManager : MonoBehaviour
     {
         keybindsProfile = keybindsIndex;
         PlayerPrefs.SetInt("keybindsProfile", keybindsProfile);
+    }
+
+    public void SetMouseSensitivity(float mouseSensitivityValue)
+    {
+        mouseSensitivity = mouseSensitivityValue;
+        PlayerPrefs.SetFloat("mouseSensitivity", mouseSensitivity);
     }
 
     public void BackButton()

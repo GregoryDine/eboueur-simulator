@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform playerCamera;
     CharacterController controller;
 
-    [SerializeField] float mouseSensitivity = 3.5f;
     [SerializeField] float walkSpeed = 6.0f;
     [SerializeField] float sprintSpeed = 10.0f;
     [SerializeField] float jumpForce = 6.0f;
@@ -99,12 +98,12 @@ public class PlayerController : MonoBehaviour
         currentMouseDelta = Vector2.SmoothDamp(currentMouseDelta, targetMouseDelta, ref currentMouseDeltaVelocity, mouseSmoothTime);
 
         //calculate camera y rot
-        cameraPitch -= currentMouseDelta.y * mouseSensitivity;
+        cameraPitch -= currentMouseDelta.y * SettingsMenuManager.instance.mouseSensitivity;
         cameraPitch = Mathf.Clamp(cameraPitch, -90, 90);
 
         //apply rot
         playerCamera.localEulerAngles = Vector3.right * cameraPitch;
-        transform.Rotate(Vector3.up * currentMouseDelta.x * mouseSensitivity);
+        transform.Rotate(Vector3.up * currentMouseDelta.x * SettingsMenuManager.instance.mouseSensitivity);
     }
 
     void UpdateMovement()
