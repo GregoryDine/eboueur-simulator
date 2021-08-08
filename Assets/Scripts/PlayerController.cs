@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour
 {
     [HideInInspector] public bool canMove;
 
     [SerializeField] Transform playerCamera;
-    CharacterController controller;
+    [HideInInspector] public CharacterController controller;
 
     [SerializeField] float walkSpeed = 6.0f;
     [SerializeField] float sprintSpeed = 10.0f;
@@ -17,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] bool lockCursor = true;
 
-    float currentHorizontalSpeed;
+    [HideInInspector] public float currentHorizontalSpeed;
 
     float cameraPitch = 0.0f;
     float velocityY = 0.0f;

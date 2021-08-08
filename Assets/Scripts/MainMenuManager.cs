@@ -21,4 +21,9 @@ public class MainMenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void CreditsButton()
+    {
+        System.Diagnostics.Process.Start("https://youtu.be/dQw4w9WgXcQ");
+    }
 }
