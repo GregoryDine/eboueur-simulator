@@ -8,9 +8,6 @@ public class Interact : MonoBehaviour
 
     [SerializeField] float reach = 3.5f;
 
-    bool pickUp = false;
-    bool throwInBin = false;
-
     [SerializeField] GameObject leftClickUI;
     [SerializeField] GameObject EKeyUI;
 
@@ -37,24 +34,6 @@ public class Interact : MonoBehaviour
 
     void Update()
     {
-        if (canInteract)
-        {
-            //detect inputs
-            //pickup
-            if (Input.GetButtonDown("Fire1"))
-            {
-                pickUp = true;
-            }
-            //throw in bin
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                throwInBin = true;
-            }
-        }
-    }
-
-    void FixedUpdate()
-    {
         PickUp();
         ThrowInBin();
     }
@@ -69,7 +48,7 @@ public class Interact : MonoBehaviour
             if (hit.transform.gameObject.tag == "CanPickUp")
             {
                 //check if input is used
-                if (pickUp)
+                if (Input.GetButtonDown("Fire1") && canInteract)
                 {
                     //get object's points value
                     PointsValue pickedUpObject = hit.transform.GetComponent<PointsValue>();
@@ -103,8 +82,6 @@ public class Interact : MonoBehaviour
             //disable input display on UI
             leftClickUI.SetActive(false);
         }
-
-        pickUp = false;
     }
 
     void ThrowInBin()
@@ -117,7 +94,7 @@ public class Interact : MonoBehaviour
             if (hit.transform.gameObject.tag == "Bin")
             {
                 //check if input is used
-                if (throwInBin)
+                if (Input.GetKeyDown(KeyCode.E) && canInteract)
                 {
                     //use the bin
                     ScoreCounter.instance.IncreaseTotalScore();                 
@@ -137,7 +114,5 @@ public class Interact : MonoBehaviour
             //disable input display on UI
             EKeyUI.SetActive(false);
         }
-
-        throwInBin = false;
     }
 }
