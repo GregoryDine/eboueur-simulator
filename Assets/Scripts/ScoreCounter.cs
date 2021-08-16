@@ -32,7 +32,7 @@ public class ScoreCounter : MonoBehaviour
     public void IncreaseTotalScore()
     {
         totalScore += currentScore;
-        currentScore = 0f;
+        currentScore = 0;
         totalScoreUI.text = totalScore + " Points!";
         collectedPointsUI.fillAmount = currentScore / 100;
     }

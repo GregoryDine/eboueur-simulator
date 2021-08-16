@@ -37,6 +37,12 @@ public class GameOverManager : MonoBehaviour
         gameOverUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        //save best score
+        if (PlayerPrefs.GetFloat("bestScore") < ScoreCounter.instance.totalScore)
+        {
+            PlayerPrefs.SetFloat("bestScore", ScoreCounter.instance.totalScore);
+        }
     }
 
     public void RetryButton()

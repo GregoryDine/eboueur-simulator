@@ -101,7 +101,7 @@ public class SettingsMenuManager : MonoBehaviour
 
     public void SetQuality(int qualityIndex)
     {
-        QualitySettings.SetQualityLevel(qualityIndex);
+        QualitySettings.SetQualityLevel(qualityIndex, true);
     }
 
     public void SetKeybindsProfile(int keybindsIndex)

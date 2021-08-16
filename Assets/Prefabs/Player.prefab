@@ -47,8 +47,8 @@ MonoBehaviour:
   grassSound: {fileID: 8300000, guid: f7f733f7d55b26745a0d392cd52d848e, type: 3}
   concreteSound: {fileID: 8300000, guid: 176c59f1b91ebcd4caff84cdeb52da4d, type: 3}
   currentSound: {fileID: 0}
-  volMin: 0.5
-  volMax: 0.7
+  volMin: 0.4
+  volMax: 0.6
   pitchMin: 0.9
   pitchMax: 1.1
 --- !u!82 &1114000258
@@ -202,7 +202,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0

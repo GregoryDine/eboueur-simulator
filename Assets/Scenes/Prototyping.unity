@@ -3927,7 +3927,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Very Low
+  m_Text: Low
 --- !u!222 &329100788
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4181,17 +4181,11 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Very Low
-      m_Image: {fileID: 0}
     - m_Text: Low
       m_Image: {fileID: 0}
     - m_Text: Medium
       m_Image: {fileID: 0}
     - m_Text: High
-      m_Image: {fileID: 0}
-    - m_Text: Very High
-      m_Image: {fileID: 0}
-    - m_Text: Ultra
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6686,7 +6680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6479374353714917622, guid: 0aa507df385f5bb43a67eac0ce7865f9, type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: -6226672563145301549, guid: 0aa507df385f5bb43a67eac0ce7865f9, type: 3}
       propertyPath: m_RootOrder
@@ -6778,7 +6772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -2438555697277961465, guid: 0aa507df385f5bb43a67eac0ce7865f9, type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -1827742543083536090, guid: 0aa507df385f5bb43a67eac0ce7865f9, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6890,7 +6884,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6227550432214964236, guid: 0aa507df385f5bb43a67eac0ce7865f9, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6236963943726285314, guid: 0aa507df385f5bb43a67eac0ce7865f9, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6926,7 +6920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9127888872818039218, guid: 0aa507df385f5bb43a67eac0ce7865f9, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa507df385f5bb43a67eac0ce7865f9, type: 3}
@@ -27499,14 +27493,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1114000259, guid: fa92ef7f17a16d84dabb45d19f4962e9, type: 3}
-      propertyPath: volMax
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1114000259, guid: fa92ef7f17a16d84dabb45d19f4962e9, type: 3}
-      propertyPath: volMin
-      value: 0.4
-      objectReference: {fileID: 0}
     - target: {fileID: 1711433507, guid: fa92ef7f17a16d84dabb45d19f4962e9, type: 3}
       propertyPath: EKeyUI
       value: 
