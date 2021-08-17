@@ -3,7 +3,9 @@ using UnityEngine;
 public class GarbageTruck : MonoBehaviour
 {
     [SerializeField] AudioSource engine;
+    [SerializeField] AudioSource crash;
     float reference;
+    bool crashed;
 
     void Update()
     {
@@ -13,11 +15,23 @@ public class GarbageTruck : MonoBehaviour
         {
             engine.Pause();
         }
-        else if (!engine.isPlaying)
+        else if (!engine.isPlaying &! GameOverManager.instance.gameIsOver)
         {
             engine.Play();
         }
 
-        transform.Translate(Vector3.forward * Time.deltaTime);
+        if (transform.position.z > 75.4)
+        {
+            engine.Stop();
+            if (!crash.isPlaying &! crashed)
+            {
+                crash.PlayOneShot(crash.clip);
+                crashed = true;
+            }
+        }
+        else
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime);
+        }
     }
 }
